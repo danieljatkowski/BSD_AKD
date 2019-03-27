@@ -19,12 +19,12 @@ function odkodowanie($tekst, $linie)
 
     $odwroconaTablica = array();
 
-    $message = $tekst;
+    $wiadomosc = $tekst;
     for($i=0; $i<count($dlugosc); $i++) {
         $dlugosc = strlen($dlugosc[$i]);
 
         $odwroconaTablica[] = substr($wiadomosc, 0, $dlugosc);
-        $wiadomosc = substr($wiadomosc, $length);
+        $wiadomosc = substr($wiadomosc, $dlugosc);
     }
 
     $tekstOdkodowany = "";
@@ -44,7 +44,7 @@ function odkodowanie($tekst, $linie)
             $kierunek = "wstecz";
         }elseif($kierunek == "naprzod") {
             $k++;
-        }elseif($kierunek == "backwards") {
+        }elseif($kierunek == "wstecz") {
             $k--;
         }
     }
@@ -86,3 +86,20 @@ function wiadomoscKodowa($tekst, $linie)
     return $tekstZakodowany;
 }
 ?>
+
+<body>
+    <form method="GET" action="kodowanie.php">
+        <b>Wpisz tekst: </b>
+        <input type="text" name="wiadomosc" /><br />
+        <b>Wpisz ilość linii: </b>
+        <input type="text" name="linie" /><br />
+        <input type="submit" name="submit" value="kodowanie" />
+    </form>
+    <form method="GET" action="odkodowanie.php">
+        <b>Wpisz tekst: </b>
+        <input type="text" name="wiadomosc" /><br />
+        <b>Wpisz ilość linii: </b>
+        <input type="text" name="linie" /><br />
+        <input type="submit" name="submit" value="odkodowanie" />
+    </form>
+</body>
