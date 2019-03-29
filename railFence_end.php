@@ -1,5 +1,5 @@
 <?php
-if(!(isset($_POST['encode']) || isset($_POST['decode']))){
+if(!(isset($_POST['encode']) && isset($_POST['encode_rail']) || (isset($_POST['decode']) && isset($_POST['decode_rail'])))){
     echo "Brak parametrów!";
 }else{
     
@@ -88,15 +88,15 @@ if(!(isset($_POST['encode']) || isset($_POST['decode']))){
 
         return $codedMessage;
     }
-    if(!isset($_POST['encode'])){        
+    if(!(isset($_POST['encode']) && isset($_POST['encode_rail']))){        
     }else{
-        $zmienna = encode($_POST['encode'], 5);
+        $zmienna = encode($_POST['encode'], $_POST['encode_rail']);
         echo $zmienna;
     }
     
-    if(!isset($_POST['decode'])){
+    if(!(isset($_POST['decode']) && isset($_POST['decode_rail']))){
     }else{
-        $zmienna1 = decode($_POST['decode'], 5); 
+        $zmienna1 = decode($_POST['decode'], $_POST['decode_rail']); 
         echo $zmienna1;
     }
     echo '<br /><a href="index.php">Powrót</a>';
