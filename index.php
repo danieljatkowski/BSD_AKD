@@ -1,13 +1,32 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 16.03.2019
- * Time: 15:30
- */
-
-$var = "Sratatat";
-
-$varqwdqwd = 213;
-
-echo $var.", ".$varqwdqwd;
+<body>
+    <h1>RailFence</h1><br />
+    <form method="POST" action="railFence_end.php">
+        <b>Do zakodowania: </b>
+        <input type="text" name="encode"><br />
+        <b>Ilość linii: </b>
+        <input type="text" name="encode_rail"><br />
+        <input type="submit" value="Wyślij">
+    </form>
+        <form method="POST" action="railFence_end.php">
+        <b>Do odkodowania: </b>
+        <input type="text" name="decode"><br />
+        <b>Ilość linii: </b>
+        <input type="text" name="decode_rail"><br />
+        <input type="submit" value="Wyślij">
+    </form>
+    <h1>Cezar</h1><br />
+    <form method="POST" action="cesar.php">
+        <b>Do zakodowania: </b>
+        <input type="text" name="encode_text"><br />
+        <b>Przesunięcie: </b>
+        <input type="text" name="encode_offset"><br />
+        <input type="submit" value="Wyślij">
+    </form>
+        <form method="POST" action="cesar.php">
+        <b>Do odkodowania: </b>
+        <input type="text" name="decode_text"><br />
+        <b>Przesunięcie: </b>
+        <input type="text" name="decode_offset"><br />
+        <input type="submit" value="Wyślij">
+    </form>
+</body>
