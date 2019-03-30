@@ -2,15 +2,15 @@
 if(!(isset($_POST['encode_offset']) && isset($_POST['encode_text']) || (isset($_POST['decode_offset']) && isset($_POST['decode_text'])))){
     echo "Brak parametrów!";
 }else{
-    function szyfrowanie($wiadomosc, $przesuniecie) {
+    function szyfrowanie($tekst, $przesuniecie) {
         $szyfrowanyTekst = "";
         $przesuniecie = $przesuniecie % 26;
         if($przesuniecie < 0) {
             $przesuniecie += 26;
         }
         $i = 0;
-        while($i < strlen($wiadomosc)) {
-            $c = strtoupper($wiadomosc{$i}); 
+        while($i < strlen($tekst)) {
+            $c = strtoupper($tekst{$i}); 
             if(($c >= "A") && ($c <= 'Z')) {
                 if((ord($c) + $przesuniecie) > ord("Z")) {
                     $szyfrowanyTekst .= chr(ord($c) + $przesuniecie - 26);
@@ -24,24 +24,24 @@ if(!(isset($_POST['encode_offset']) && isset($_POST['encode_text']) || (isset($_
         }
         return $szyfrowanyTekst;
     }
-    function odszyfrowanie($wiadomosc, $przesuniecie) {
+    function odszyfrowanie($tekst, $przesuniecie) {
         $odszyfrowanyTekst = "";
         $przesuniecie = $przesuniecie % 26;
         if($przesuniecie < 0) {
             $przesuniecie += 26;
         }
         $i = 0;
-        while($i < strlen($wiadomosc)) {
-            $c = strtoupper($wiadomosc{$i}); 
+        while($i < strlen($tekst)) {
+            $c = strtoupper($tekst{$i}); 
             if(($c >= "A") && ($c <= 'Z')) {
                 if((ord($c) - $przesuniecie) < ord("A")) {
                     $odszyfrowanyTekst .= chr(ord($c) - $przesuniecie + 26);
+                } else {
+                    $odszyfrowanyTekst .= chr(ord($c) - $przesuniecie);
+                }
             } else {
-                $odszyfrowanyTekst .= chr(ord($c) - $przesuniecie);
-            }
-          } else {
               $odszyfrowanyTekst .= " ";
-          }
+            }
           $i++;
         }
         return $odszyfrowanyTekst;
