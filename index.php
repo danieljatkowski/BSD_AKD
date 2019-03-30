@@ -4,7 +4,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <h1>RailFence</h1><br />
                 <form method="POST" action="railFence_end.php">
                     <b>Do zakodowania: </b>
@@ -21,7 +21,7 @@
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <h1>Cezar</h1><br />
                 <form method="POST" action="cesar.php">
                     <b>Do zakodowania: </b>
@@ -38,7 +38,7 @@
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <h1>Vigenere</h1><br />
                 <form method="POST" action="vigenere.php">
                     <b>Do zakodowania: </b>
@@ -55,7 +55,25 @@
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
+            <div class="col-lg-3">
+                <h1>Macierze</h1><br />
+                <form method="POST" action="transposition.php">
+                    <b>Do zakodowania: </b>
+                    <input type="text" class="form-control" name="encode_text"><br />
+                    <b>Szyfr: </b>
+                    <input type="text" class="form-control" name="encode_cipher"><br />
+                    <input type="submit" class="btn btn-primary" value="Wyślij">
+                </form>
+                    <form method="POST" action="transposition.php">
+                    <b>Do odkodowania: </b>
+                    <input type="text" class="form-control" name="decode_text"><br />
+                    <b>Szyfr: </b>
+                    <input type="text" class="form-control" name="decode_cipher"><br />
+                    <input type="submit" class="btn btn-primary" value="Wyślij">
+                </form>
+            </div>
         </div>
+        <hr />
     </div>
     
 </body>
