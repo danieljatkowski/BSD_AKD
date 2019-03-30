@@ -58,6 +58,6 @@ if(!(isset($_POST['encode_offset']) && isset($_POST['encode_text']) || (isset($_
         $zmienna1 = odszyfrowanie($_POST['decode_text'], $_POST['decode_offset']); 
         echo $zmienna1;
     }
-    echo '<br /><a href="index.php">Powrót</a>';
+    echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
 }
 ?>
