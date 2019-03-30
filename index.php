@@ -1,4 +1,5 @@
 <body>
+<center>
     <h1>RailFence</h1><br />
     <form method="POST" action="railFence_end.php">
         <b>Do zakodowania: </b>
@@ -44,4 +45,5 @@
         <input type="text" name="decode_password"><br />
         <input type="submit" value="Wyślij">
     </form>
+</center>
 </body>
