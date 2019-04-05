@@ -2,6 +2,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+    <center>
+        <h1> PS 2</h1>  </br>
+    </center>
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -57,18 +60,18 @@
             </div>
             <div class="col-lg-3">
                 <h1>Macierze</h1><br />
-                <form method="POST" action="transposition.php">
+                <form method="POST" action="Matrix.php">
                     <b>Do zakodowania: </b>
-                    <input type="text" class="form-control" name="encode_text"><br />
-                    <b>Szyfr: </b>
                     <input type="text" class="form-control" name="encode_cipher"><br />
+                    <b>Szyfr: </b>
+                    <input type="text" class="form-control" name="encode_key"><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
-                    <form method="POST" action="transposition.php">
+                    <form method="POST" action="Matrix.php">
                     <b>Do odkodowania: </b>
-                    <input type="text" class="form-control" name="decode_text"><br />
-                    <b>Szyfr: </b>
                     <input type="text" class="form-control" name="decode_cipher"><br />
+                    <b>Szyfr: </b>
+                    <input type="text" class="form-control" name="decode_key"><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
