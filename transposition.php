@@ -31,11 +31,9 @@ if(!(isset($_POST['encode']) && isset($_POST['encode_cipher']) || (isset($_POST[
             for( $j = 0 ; $j < strlen($szyfr) ; $j++){
                 if(isset($tekstArr[$i][$szyfrArr[$k]])){
                     $tekstArri[$i][$j] = $tekstArr[$i][$szyfrArr[$k]];
+                    $zaszyfrowany .= $tekstArri[$i][$j];
                 }
-                else{
-                    $tekstArri[$i][$j] = "-";                
-                }
-                $zaszyfrowany .= $tekstArri[$i][$j];
+                
                 if(0 <= $k && $k < strlen($szyfr)-1){
                     $k++;
                 }else{
