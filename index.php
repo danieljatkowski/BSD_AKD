@@ -61,17 +61,10 @@
             <div class="col-lg-3">
                 <h1>Macierze</h1><br />
                 <form method="POST" action="transposition.php">
-                    <b>Do zakodowania: </b>
+                    <b>Do zakodowania/odkodowania: </b>
                     <input type="text" class="form-control" name="encode"><br />
                     <b>Szyfr: </b>
                     <input type="text" class="form-control" name="encode_cipher"><br />
-                    <input type="submit" class="btn btn-primary" value="Wyślij">
-                </form>
-                    <form method="POST" action="Matrix.php">
-                    <b>Do odkodowania: </b>
-                    <input type="text" class="form-control" name="decode"><br />
-                    <b>Szyfr: </b>
-                    <input type="text" class="form-control" name="decode_cipher"><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
