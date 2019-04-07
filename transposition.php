@@ -44,7 +44,51 @@ if(!(isset($_POST['encode']) && isset($_POST['encode_cipher']) || (isset($_POST[
         }
         echo $zaszyfrowany;
     }
+    function odszyfrowanie($tekst, $szyfr){
 
+        $szyfr = str_replace("-", "", $szyfr);
+        $szyfrArr = array();
+        for( $i = 0; $i < strlen($szyfr) ; $i++ ){
+            $szyfrArr[$i] = $szyfr[$i];  
+        }
+        $tekst = strtoupper(str_replace(" ", "", $tekst)); 
+        $TAH = ceil(strlen($tekst)/strlen($szyfr));
+        
+        $tekstArr = array();
+        $tekstArri = array();
+        $k = 0;
+        for( $i = 0 ; $i < $TAH ; $i++ ){
+            for( $j = 0 ; $j < strlen($szyfr) ; $j++){
+                if(isset($tekst[$k])){
+                    $tekstArr[$i][$j] = $tekst[$k];
+                    $k++;
+                }  
+            }
+        }
+        $m = 0;
+        for( $i = 0 ; $i < $TAH ; $i++ ){
+            for( $j = 0 ; $j < strlen($szyfr) ; $j++){
+                if(isset($tekstArr[$i][$j])){
+                    $tekstArri[$i][$szyfrArr[$m]] = $tekstArr[$i][$j]; 
+                }
+                if(0 <= $m && $m < strlen($szyfr)-1){
+                    $m++;
+                }else{
+                    $m = 0;
+                    break;
+                }
+            }
+        }
+        $odkodowany = "";
+        for( $i = 0 ; $i < $TAH ; $i++ ){
+            for( $j = 0 ; $j < count($szyfrArr) ; $j++){
+                if(isset($tekstArri[$i][$j])){
+                    $odkodowany .= $tekstArri[$i][$j];
+                }
+            }
+        }
+        echo $odkodowany;
+    }
     if(!(isset($_POST['encode']) && isset($_POST['encode_cipher']))){        
     }else{
         $zmienna = szyfrowanie($_POST['encode'], $_POST['encode_cipher']);
