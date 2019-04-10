@@ -78,5 +78,19 @@
         </div>
         <hr />
     </div>
-    
+    <center>
+        <h1> PS 3</h1>  </br>
+    </center>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <h1>Generator</h1><br />
+                <form method="GET" action="generator.php">
+                    <center>
+                        <input type="submit" class="btn btn-primary" value="Uruchom">
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
