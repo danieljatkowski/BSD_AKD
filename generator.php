@@ -17,28 +17,36 @@ $seed = time(0);
         $bits[$i] = $seed & 1;
         $seed >>= 1;
     }
-for ($j=0; $j<10; $j++) {
     $xorValue = 0;
+for ($j=0; $j<10; $j++) {
+
     for ($i = 0; $i < $degree; $i++) {
-        if ($polynomial[$i + 1] == "1") {
-            $xorValue ^= $bits[$i];
-        }
+         if($polynomial[$i + 1] == "1") {
+             //$xorValue = 0 ^ 1;
+            $xorValue = (int)$polynomial[$i-1] ^ (int)$polynomial[$i];
+       }
     }
     echo "<br />";
     echo  $j+1 . "." . "Przed: ";
     for ($i = 0; $i < $degree; $i++) {
-        echo $bits[$i];
+        echo $polynomial[$i];
     }
     echo "<br />";
     echo "XOR: " . $xorValue . "<br />";
     for ($i = $degree - 1; $i >= 1; $i--) {
-        $bits[$i] = $bits[$i - 1];
+
+        $polynomial[$i] = $polynomial[$i - 1];
+
     }
-    $bits[0] = $xorValue;
+   $polynomial[0] = $xorValue;
     echo "Po: ";
     for ($i = 0; $i < $degree; $i++) {
-        echo $bits[$i];
+        echo $polynomial[$i];
     }
+    echo "<br>";
 }
 echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
+$a = 1;
+$b = 0;
+echo $a ^= $b;
 
