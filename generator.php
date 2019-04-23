@@ -9,7 +9,9 @@
 
 $polynomial = "100011101";
 $degree = strlen($polynomial) - 1;
-$bits[$degree];
+if(isset($bits[$degree])){
+    $bits[$degree];
+}
 
 $seed = time(0);
 
@@ -21,10 +23,12 @@ $seed = time(0);
 for ($j=0; $j<10; $j++) {
 
     for ($i = 0; $i < $degree; $i++) {
-         if($polynomial[$i + 1] == "1") {
-             //$xorValue = 0 ^ 1;
-            $xorValue = (int)$polynomial[$i-1] ^ (int)$polynomial[$i];
-       }
+        if($polynomial[$i + 1] == "1") {
+            //$xorValue = 0 ^ 1;
+            if(isset($polynomial[$i-1])){
+                $xorValue = (int)$polynomial[$i-1] ^ (int)$polynomial[$i];
+            }
+        }
     }
     echo "<br />";
     echo  $j+1 . "." . "Przed: ";
@@ -46,7 +50,4 @@ for ($j=0; $j<10; $j++) {
     echo "<br>";
 }
 echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
-$a = 1;
-$b = 0;
-echo $a ^= $b;
 

@@ -83,12 +83,16 @@
     </center>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <h1>Generator</h1><br />
-                <form method="GET" action="generator.php">
-                    <center>
-                        <input type="submit" class="btn btn-primary" value="Uruchom">
-                    </center>
+                <form method="POST" action="generator-daniel.php">
+                    <b>Ciąg binarny: </b>
+                    <input type="text" class="form-control" name="input"><br />
+                    <b>O ile pozycji do XOR: </b>
+                    <input type="text" class="form-control" name="number"><br />
+                    <b>Do zakodowania: </b>
+                    <input type="text" class="form-control" name="to_encrypt"><br />
+                    <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
         </div>
