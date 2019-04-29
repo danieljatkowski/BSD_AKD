@@ -97,4 +97,21 @@
             </div>
         </div>
     </div>
+    <center>
+        <h1> PS 4</h1>  </br>
+    </center>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h1>Szyfrowanie DES</h1><br />
+                <form method="POST" action="DES.php">
+                    <b>Wpisz tekst do zaszyfrowania: </b>
+                    <input type="text" class="form-control" name="input"><br />
+                    <b>Wgraj plik z kluczem </b>
+                    <input type="file" class="form-control" name="number"><br />
+                    <input type="submit" class="btn btn-primary" value="Wyślij">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
