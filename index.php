@@ -106,7 +106,7 @@
                 <h1>Szyfrowanie DES</h1><br />
                 <form method="POST" action="DES.php">
                     <b>Wpisz tekst do zaszyfrowania: </b>
-                    <input type="text" class="form-control" name="input"><br />
+                    <input type="text" class="form-control" name="tekst"><br />
                     <b>Wgraj plik z kluczem </b>
                     <input type="file" class="form-control" name="number"><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
