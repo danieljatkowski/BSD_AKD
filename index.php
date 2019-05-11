@@ -108,7 +108,7 @@
                     <b>Wpisz tekst do zaszyfrowania: </b>
                     <input type="text" class="form-control" name="tekst"><br />
                     <b>Wgraj plik z kluczem </b>
-                    <input type="file" class="form-control" name="number"><br />
+                    <input type="file" class="form-control" name="klucz"><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
