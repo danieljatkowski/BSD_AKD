@@ -98,25 +98,53 @@ function encryption($tekst)
     echo "<br /> <br />";
     $z = 0;
 
+    $PC2 = array(14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8,
+        16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44,
+        49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32);
+
     while ($z < 16) {
         $numer = $z + 1;
         echo $numer.". ";
-
-
-        for ($i = 0; $i < 28; $i++) {
-            if ($z==0 || $z==1 || $z==8 || $z==15) {
-                $tmp = $C[0];
-                $C[$i] = $C[$i + 1];
-                array_push($C, $tmp);
-                echo $C[$i];
+        if ($z==0 || $z==1 || $z==8 || $z==15) {
+            $tempC = array_shift($C);
+            $tempD = array_shift($D);
+            $C[] = $tempC;
+            $D[] = $tempD;
+            echo "<br>C: ";
+            foreach($C as $value){
+                echo $value;
             }
-            else {
-                $tmp = $C[0];
-                $tmp1 = $C[1];
-                $C[$i] = $C[$i + 2];
-                array_push($C, 1,1);
-                echo $C[$i];
+            echo "<br>D: ";
+            foreach($D as $value){
+                echo $value;
             }
+            $sum = array_merge($C, $D);
+            echo "<br>Połączony: ";
+            foreach($sum as $value){
+                echo $value;
+            }
+        }
+        else {
+            $tempC = array_shift($C);
+            $temp_secondC = array_shift($C);
+            $tempD = array_shift($D);
+            $temp_secondD = array_shift($D);
+            array_push($C, $tempC, $temp_secondC);
+            array_push($D, $tempD, $temp_secondD);
+            echo "<br>C: ";
+            foreach($C as $value){
+                echo $value;
+            }
+            echo "<br>D: ";
+            foreach($D as $value){
+                echo $value;
+            }
+            $sum = array_merge($C, $D);
+            echo "<br>Połączony: ";
+            foreach($sum as $value){
+                echo $value;
+            }
+
         }
         echo "<br>";
         $z++;
