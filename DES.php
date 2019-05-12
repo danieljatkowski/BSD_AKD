@@ -155,15 +155,15 @@ function encryption($tekst)
 }
 
 if(!(isset($_POST['tekst']) )){
-    }else{
-       // $content = file_get_contents("key.txt");
-        $zmienna = encryption($_POST['tekst']);
-        echo $zmienna;
-    }
+}else{
+    // $content = file_get_contents("key.txt");
+    $zmienna = encryption($_POST['tekst']);
+    echo $zmienna;
+}
 
-    if(!(isset($_POST['decode']) && isset($_POST['decode_cipher']))){
-    }else{
-        $zmienna1 = encryption($_POST['decode'], $_POST['decode_cipher']);
-        echo $zmienna1;
-    }
-    echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
+if(!(isset($_POST['decode']) && isset($_POST['decode_cipher']))){
+}else{
+    $zmienna1 = encryption($_POST['decode'], $_POST['decode_cipher']);
+    echo $zmienna1;
+}
+echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
