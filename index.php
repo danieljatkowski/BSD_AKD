@@ -104,9 +104,11 @@
         <div class="row">
             <div class="col-lg-3">
                 <h1>Szyfrowanie DES</h1><br />
-                <form method="POST" action="DES.php">
+                <form method="POST" action="DES.php" enctype="multipart/form-data">
                     <b>Wpisz tekst do zaszyfrowania: </b>
                     <input type="text" class="form-control" name="tekst"><br />
+                    <b>Wrzuć plik .txt z kluczem</b><br />
+                    <input type="file" class="form-control-file" name="txt" /><br /><br />
                     <input type="submit" class="btn btn-primary" value="Wyślij">
                 </form>
             </div>
