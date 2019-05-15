@@ -45,6 +45,8 @@ if($_FILES['txt']['error'] != 0){
             $D = array();
             $CiDbyPC2 = array();
             $KRXor =array();
+            $mainStringArr=array();
+            $almostFinalArray=array();
             $s1 = array(
                 0=> array(14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7) ,
                 1=> array( 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8) ,
@@ -85,11 +87,19 @@ if($_FILES['txt']['error'] != 0){
                 1=>array(1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2) ,
                 2=>array(7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8) ,
                 3=>array(2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11 ),);
+            $p = array( 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18,
+			31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25);
+            $mainStringbyP=array();
+            $LnewRXor=array();
+            $ip_1= array( 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55,
+			23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21,
+			61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59,
+			27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25 );
+            $finalArray = array();
 
             //1.
-            echo "<b>Tekst jawny: </b>" . $tekst . "<br />";
+            echo "<b>1. Tekst jawny: </b>" . $tekst . "<br />";
             echo "<b>Jego odpowiednik binarny:</b> " . $bin . "<br/>";
-            echo "<b>Długość odpowiednika: </b>" . $lenBin . "<br/>";
             if ($lenBin <= 64) {
                 $newBin = str_pad($bin, 64, rand(0, 1), STR_PAD_RIGHT);
             } else
@@ -102,23 +112,30 @@ if($_FILES['txt']['error'] != 0){
             for ($i = 0; $i < count($IP); $i++) {
                 $newBinArrByIP[$i] = $newBinArr[$IP[$i] - 1];
             }
-            echo "<b>Ciąg wygenerowany przy pomocy macierzy IP: </b>" . join("", $newBinArrByIP) . "<br/>";
+            echo "<br/>";
+            echo "<b>2. Ciąg wygenerowany przy pomocy macierzy IP: </b>" . join("", $newBinArrByIP) . "<br/>";
+
             //3.
             for ($i = 0; $i < 32; $i++) {
                 $left[$i] = $newBinArrByIP[$i];
             }
-            echo "<b>L: </b>" . join("", $left) . "<br/>";
+            echo "<br/>";
+            echo "<b>3. L: </b>" . join("", $left) . "<br/>";
             for ($i = 32; $i < 64; $i++) {
                 $right[$i - 32] = $newBinArrByIP[$i];
             }
             echo "<b>R: </b>" . join("", $right) . "<br/>";
+
             //8.
             for ($n = 0; $n < count($E); $n++) {
                 $newR[$n] = $right[$E[$n] - 1];
             }
-            echo "<b>R po transformacji z E: </b>" . join("", $newR) . "<br/>";
+            echo "<br/>";
+            echo "<b>8. R po transformacji z E: </b>" . join("", $newR) . "<br/>";
+
             //4.
-            echo "<b>Klucz: </b>" . $content . "</br>";
+            echo "<br/>";
+            echo "<b>4. Klucz z pliku: </b>" . $content . "</br>";
             for ($i = 0; $i < strlen($content); $i++) {
                 $keyToArr[$i] = $content[$i];
             }
@@ -130,8 +147,10 @@ if($_FILES['txt']['error'] != 0){
                 echo $key;
             }
             echo "<br>";
+            echo "<br/>";
+
             //5.
-            echo "<b>C: </b>";
+            echo "<b>5. C: </b>";
             for ($i = 0; $i < 28; $i++) {
                 $C[$i] = $keybyPC[$i];
                 echo $C[$i];
@@ -143,7 +162,9 @@ if($_FILES['txt']['error'] != 0){
             }
             echo "<br /> <br />";
             $z = 0;
+
             //6. i 7.
+            echo "<b>6. i 7.</b><br/>";
             while ($z < 16) {
                 $numer = $z + 1;
                 echo $numer.". ";
@@ -214,16 +235,17 @@ if($_FILES['txt']['error'] != 0){
             }
 
             //9.
+            echo "<br/>";
             for ($i=0; $i<count($CiDbyPC2); $i++) {
                 $KRXor[$i]= (int)$CiDbyPC2[$i]^(int)$right[$i];
             }
-            echo "<b>KeyKRXor: </b>";
+            echo "<b>9. KeyKRXor: </b>";
             foreach ($KRXor as $keyKRXor) {
                 echo $keyKRXor;
             }
 
             //10.
-
+            echo "<br/>";
             $string1 = array_slice($KRXor, 0, 6);
             $string2 = array_slice($KRXor, 6, 6);
             $string3 = array_slice($KRXor, 12, 6);
@@ -232,7 +254,7 @@ if($_FILES['txt']['error'] != 0){
             $string6 = array_slice($KRXor, 30, 6);
             $string7 = array_slice($KRXor, 36, 6);
             $string8 = array_slice($KRXor, 42, 6);
-            echo "<b><br/>String 1: </b>";
+            echo "<b><br/>10. String 1: </b>";
             foreach ($string1 as $keystr1) {
                 echo $keystr1;
             }
@@ -264,6 +286,87 @@ if($_FILES['txt']['error'] != 0){
             foreach ($string8 as $keystr8) {
                 echo $keystr8;
             }
+            echo "<br/>";
+            //11., 12. i 13.
+            $newI1 = bindec($string1[0]. $string1[5]);
+            $newI2 = bindec($string2[0]. $string2[5]);
+            $newI3 = bindec($string3[0]. $string3[5]);
+            $newI4 = bindec($string4[0]. $string4[5]);
+            $newI5 = bindec($string5[0]. $string5[5]);
+            $newI6 = bindec($string6[0]. $string6[5]);
+            $newI7 = bindec($string7[0]. $string7[5]);
+            $newI8 = bindec($string8[0]. $string8[5]);
+
+            $newJ1 = bindec($string1[1]. $string1[2]. $string1[3]. $string1[4]);
+            $newJ2 = bindec($string2[1]. $string2[2]. $string2[3]. $string2[4]);
+            $newJ3 = bindec($string3[1]. $string3[2]. $string3[3]. $string3[4]);
+            $newJ4 = bindec($string4[1]. $string4[2]. $string4[3]. $string4[4]);
+            $newJ5 = bindec($string5[1]. $string5[2]. $string5[3]. $string5[4]);
+            $newJ6 = bindec($string6[1]. $string6[2]. $string6[3]. $string6[4]);
+            $newJ7 = bindec($string7[1]. $string7[2]. $string7[3]. $string7[4]);
+            $newJ8 = bindec($string8[1]. $string8[2]. $string8[3]. $string8[4]);
+
+            $newString1 = sprintf("%04d", decbin($s1[(int)$newI1][(int)$newJ1]));
+            $newString2 = sprintf("%04d", decbin($s2[(int)$newI2][(int)$newJ2]));
+            $newString3 = sprintf("%04d", decbin($s3[(int)$newI3][(int)$newJ3]));
+            $newString4 = sprintf("%04d", decbin($s4[(int)$newI4][(int)$newJ4]));
+            $newString5 = sprintf("%04d", decbin($s5[(int)$newI5][(int)$newJ5]));
+            $newString6 = sprintf("%04d", decbin($s6[(int)$newI6][(int)$newJ6]));
+            $newString7 = sprintf("%04d", decbin($s7[(int)$newI7][(int)$newJ7]));
+            $newString8 = sprintf("%04d", decbin($s8[(int)$newI8][(int)$newJ8]));
+            $mainString = $newString1.$newString2.$newString3.$newString4.$newString5.$newString6.$newString7.$newString8;
+
+
+            echo "<br/><b>11.,12. i 13. newString 1:</b> ".$newString1;
+            echo "<br/><b>newString 2:</b> ".$newString2;
+            echo "<br/><b>newString 3:</b> ".$newString3;
+            echo "<br/><b>newString 4:</b> ".$newString4. "=> <b>MainString: </b>".$mainString;
+            echo "<br/><b>newString 5:</b> ".$newString5;
+            echo "<br/><b>newString 6:</b> ".$newString6;
+            echo "<br/><b>newString 7:</b> ".$newString7;
+            echo "<br/><b>newString 8:</b> ".$newString8;
+
+            for ($i = 0; $i < strlen($mainString); $i++) {   //mainString -> mainStringArr
+                $mainStringArr[$i] = $mainString[$i];
+                   }
+
+            //14.
+            echo "<br/>";
+            echo "<br/><b>14. MainStringbyP: </b>";
+            for ($n = 0; $n < count($p); $n++) {       //tablica na zmianę kolejności
+                $mainStringbyP[$n] = $mainStringArr[$p[$n] - 1];
+            }
+            foreach ($mainStringbyP as $keyP) {
+                echo $keyP;
+            }
+
+            //15.
+            echo "<br/>";
+            for ($i=0; $i<count($left); $i++) {
+                $LnewRXor[$i]= (int)$left[$i]^(int)$mainStringbyP[$i];
+            }
+            echo "<br/><b>15. LnewRXor: </b>";
+            foreach ($LnewRXor as $lrxor) {
+                echo $lrxor;
+            }
+
+            //16. i 17.
+            echo "<br/>";
+            $almostFinalArray=array_merge($LnewRXor, $right);
+            echo "<br/><b>16. i 17. AlmostFinalArray:  </b>";
+            foreach ($almostFinalArray as $afinal) {
+                echo $afinal;
+            }
+
+            //18.
+            echo "<br/>";
+            echo "<br/><b>18. FinalArray:  </b>";
+            for ($n = 0; $n < count($ip_1); $n++) {       //tablica na zmianę kolejności
+                $finalArray[$n] = $almostFinalArray[$ip_1[$n] - 1];
+                echo $finalArray[$n];
+            }
+
+
         }
 
         if (!(isset($_POST['tekst']))) {
