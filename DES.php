@@ -365,6 +365,15 @@ if($_FILES['txt']['error'] != 0){
                 $finalArray[$n] = $almostFinalArray[$ip_1[$n] - 1];
                 echo $finalArray[$n];
             }
+            $finalString=implode("", $finalArray);
+
+
+            $finalsStringASCII = '';
+            for($i=0; $i<strlen($finalString); $i+=8) {
+                $finalsStringASCII .= (string)chr(intval(substr($finalString, $i, 8), 2));
+            }
+            echo "<br/><b>Encrypted message: </b>".$finalsStringASCII;
+
 
 
         }
