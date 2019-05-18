@@ -15,7 +15,7 @@ if($_FILES['txt']['error'] != 0){
 }else {
     $content = file_get_contents($_FILES['txt']['tmp_name']);
     if(strlen($content) != 64){
-        echo "<b>Klucz musi mieć 64 bity! W tym momencie ma: ". strlen($content) ."</b><br />Za 5 sekund przekieruję Cię na stronę główną.";
+        echo "<b>Klucz musi mieć 64 bity! W tym momencie ma: ". strlen($content) ."</b>";
         echo '<br /><a href="index.php" class="btn btn-primary">Powrót</a>';
     }else {
 
