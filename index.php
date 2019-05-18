@@ -85,7 +85,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <h1>Generator</h1><br />
-                <form method="POST" action="generator-daniel.php">
+                <form method="POST" action="generator_dobry.php">
                     <b>Ciąg binarny: </b>
                     <input type="text" class="form-control" name="input"><br />
                     <b>O ile pozycji do XOR: </b>
